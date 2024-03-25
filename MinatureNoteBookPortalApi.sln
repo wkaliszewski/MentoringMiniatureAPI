@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinatureNoteBookPortalApi", "MinatureNoteBookPortalApi\MinatureNoteBookPortalApi.csproj", "{FC4CB23D-B433-41CE-A9E4-62272A7019A5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC4CB23D-B433-41CE-A9E4-62272A7019A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC4CB23D-B433-41CE-A9E4-62272A7019A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC4CB23D-B433-41CE-A9E4-62272A7019A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC4CB23D-B433-41CE-A9E4-62272A7019A5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DD74F6E6-B8F5-4C5B-8D7E-6A954C3079FC}
+	EndGlobalSection
+EndGlobal

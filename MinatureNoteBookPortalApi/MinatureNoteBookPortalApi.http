@@ -1,0 +1,6 @@
+@MinatureNoteBookPortalApi_HostAddress = http://localhost:5258
+
+GET {{MinatureNoteBookPortalApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
