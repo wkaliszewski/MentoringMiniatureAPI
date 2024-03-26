@@ -1,18 +1,18 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MinatureNoteBookPortalApi.Data;
-using MinatureNoteBookPortalApi.Models;
+using MinatureNoteBookPortalApi.Dtos.Miniature;
 using MinatureNoteBookPortalApi.Mappers;
     using System.Xml;
 
 namespace MinatureNoteBookPortalApi.Controllers
 {
-    [Route("api/[miniature]")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class Miniature : ControllerBase
+    public class MiniatureController : ControllerBase
     {
         private readonly AplicationDBContext _context;
-        public Miniature(AplicationDBContext context)
+        public MiniatureController(AplicationDBContext context)
         {
             _context = context;
         }
@@ -36,6 +36,14 @@ namespace MinatureNoteBookPortalApi.Controllers
                 return NotFound();
             }
             return Ok(minaiture.ToMiniatureDto());
+        }
+        [HttpPost]
+        public IActionResult Create([FromBody] CreateMiniatureRequestDto miniatureDto)
+        {
+            var miniatureModel = miniatureDto.ToMiniatureFromCreateDTO();
+            _context.Miniature.Add(miniatureModel);
+            _context.SaveChanges();
+            return CreatedAtAction(nameof(GetbById), new { id = miniatureModel.Id }, miniatureModel.ToMiniatureDto());
         }
     }
 }

@@ -1,5 +1,7 @@
-﻿using MinatureNoteBookPortalApi.Controllers;
+﻿
+using Microsoft.AspNetCore.Http.HttpResults;
 using MinatureNoteBookPortalApi.Dtos.Miniature;
+using MinatureNoteBookPortalApi.Models;
 
 namespace MinatureNoteBookPortalApi.Mappers
 {
@@ -11,7 +13,23 @@ namespace MinatureNoteBookPortalApi.Mappers
             {
                 Name = miniatureModel.Name,
                 Manufactured = miniatureModel.Manufactured,
-                MainImageUrl = miniatureModel.MainImageUrl
+                MainImageUrl = miniatureModel.MainImageUrl,
+                Description = miniatureModel.Description,
+                LastEdited = miniatureModel.LastEdited,
+                CreatedOn = miniatureModel.CreatedOn,
+            };
+        }
+        public static Miniature ToMiniatureFromCreateDTO(this CreateMiniatureRequestDto miniature)
+        {
+            return new Miniature
+            {
+                Id = miniature.Id,
+                Name = miniature.Name,
+                Manufactured = miniature.Manufactured,
+                MainImageUrl = miniature.MainImageUrl,
+                Description = miniature.Description,
+                LastEdited = miniature.LastEdited,
+                CreatedOn = miniature.CreatedOn,
             };
         }
     }
