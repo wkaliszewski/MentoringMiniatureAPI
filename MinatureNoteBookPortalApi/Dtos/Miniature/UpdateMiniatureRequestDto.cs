@@ -2,8 +2,9 @@
 
 namespace MinatureNoteBookPortalApi.Dtos.Miniature
 {
-    public class MianiatureDto
+    public class UpdateMiniatureRequestDto
     {
+        
         public int Id { get; set; }
         public string Name { get; set; }
         public string Manufactured { get; set; }
@@ -12,5 +13,6 @@ namespace MinatureNoteBookPortalApi.Dtos.Miniature
         public List<Colors> Colors { get; set; }
         public DateTime CreatedOn { get; set; }
         public DateTime LastEdited { get; set; }
-    }
+    
+}
 }

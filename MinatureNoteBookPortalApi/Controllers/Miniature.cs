@@ -20,21 +20,24 @@ namespace MinatureNoteBookPortalApi.Controllers
         public string Name { get; internal set; }
 
         [HttpGet]
-        public IActionResult GetAll() {
+        public IActionResult GetAll() 
+        {
             var minaitures = _context.Miniature.ToList()
                 .Select(m => m.ToMiniatureDto());
 
             return Ok(minaitures);
-
         }
+
         [HttpGet("{id}")]
-        public IActionResult GetbById([FromRoute] int id) {
+        public IActionResult GetbById([FromRoute] int id) 
+        {
             var minaiture = _context.Miniature.Find(id);
 
-            if(minaiture == null)
+            if (minaiture == null)
             {
                 return NotFound();
             }
+
             return Ok(minaiture.ToMiniatureDto());
         }
         [HttpPost]
@@ -44,6 +47,30 @@ namespace MinatureNoteBookPortalApi.Controllers
             _context.Miniature.Add(miniatureModel);
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetbById), new { id = miniatureModel.Id }, miniatureModel.ToMiniatureDto());
+        }
+
+        [HttpPut]
+        [Route("{id}")]
+
+        public IActionResult Update([FromRoute] int id, [FromBody] UpdateMiniatureRequestDto updateDto)
+        {
+            var miniatureModel = _context.Miniature.FirstOrDefault(x => x.Id == id);
+            if (miniatureModel == null)
+            {
+                return NotFound();
+            }
+
+            miniatureModel.Name = updateDto.Name;
+            miniatureModel.Manufactured = updateDto.Manufactured; 
+            miniatureModel.MainImageUrl = updateDto.MainImageUrl;
+            miniatureModel.Description = updateDto.Description;
+            miniatureModel.Colors = updateDto.Colors;
+            miniatureModel.CreatedOn = updateDto.CreatedOn;
+            miniatureModel.LastEdited  = updateDto.LastEdited;
+
+            _context.SaveChanges();
+
+            return Ok(miniatureModel.ToMiniatureDto());
         }
     }
 }

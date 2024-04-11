@@ -23,7 +23,7 @@ namespace MinatureNoteBookPortalApi.Mappers
         {
             return new Miniature
             {
-                Id = miniature.Id,
+               
                 Name = miniature.Name,
                 Manufactured = miniature.Manufactured,
                 MainImageUrl = miniature.MainImageUrl,
