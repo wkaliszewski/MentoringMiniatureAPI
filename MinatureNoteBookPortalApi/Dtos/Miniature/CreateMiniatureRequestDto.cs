@@ -4,7 +4,6 @@ namespace MinatureNoteBookPortalApi.Dtos.Miniature
 {
     public class CreateMiniatureRequestDto
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Manufactured { get; set; }
         public string MainImageUrl { get; set; }

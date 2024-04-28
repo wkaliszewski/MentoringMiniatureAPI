@@ -29,7 +29,7 @@ namespace MinatureNoteBookPortalApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetbById([FromRoute] int id) 
+        public IActionResult GetById([FromRoute] int id) 
         {
             var minaiture = _context.Miniature.Find(id);
 
@@ -46,7 +46,8 @@ namespace MinatureNoteBookPortalApi.Controllers
             var miniatureModel = miniatureDto.ToMiniatureFromCreateDTO();
             _context.Miniature.Add(miniatureModel);
             _context.SaveChanges();
-            return CreatedAtAction(nameof(GetbById), new { id = miniatureModel.Id }, miniatureModel.ToMiniatureDto());
+            return CreatedAtAction(nameof(GetById), new { id = miniatureModel.Id }, miniatureModel.ToMiniatureDto());
+            
         }
 
         [HttpPut]
@@ -71,6 +72,22 @@ namespace MinatureNoteBookPortalApi.Controllers
             _context.SaveChanges();
 
             return Ok(miniatureModel.ToMiniatureDto());
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+
+        public IActionResult Delete([FromRoute] int id) 
+        {
+            var miniatureModel = _context.Miniature.FirstOrDefault(x => x.Id == id);
+            if (miniatureModel == null)
+            {
+                return NotFound();
+            }
+            _context.Miniature.Remove(miniatureModel);
+            _context.SaveChanges();
+
+            return NoContent();
         }
     }
 }
